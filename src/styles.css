@@ -1,1 +1,616 @@
-/* You can add global styles to this file, and also import other style files */
+/* Глобальные переменные темы — те самые var(--surface), которые мы использовали */
+:root {
+  --bg: #0d131c;
+  --surface: #141d2a;
+  --surface2: #1b2738;
+  --primary: #38e59d;
+  --primary-hover: #2bcf8a;
+  --border: rgba(255, 255, 255, 0.05);
+  
+  /* Добавляем недостающие цвета, чтобы текст не пропадал */
+  --teal: var(--primary); 
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+/* Принудительно делаем весь текст в инпутах белым */
+input, textarea, select {
+  color: #ffffff !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #060a14;
+  background-image:
+    radial-gradient(ellipse at top left,     rgba(0, 200, 170, 0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(90,  50, 200, 0.18) 0%, transparent 50%);
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'DM Sans', 'Inter', sans-serif;
+}
+
+/* Стили для главного контейнера страниц */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Шапка сайта (Nav) */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.nav-logo span {
+  background: linear-gradient(45deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+}
+
+/* Кнопки */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Баннер для гостей */
+.guest-banner {
+  background: linear-gradient(90deg, rgba(99,102,241,0.15) 0%, rgba(168,85,247,0.15) 100%);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.guest-text {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* Заголовки секций */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Сетка карточек (Каталог) */
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.nft-card {
+  background: var(--surface2);
+  border-radius: 12px; /* Более острые углы, как на макете */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.nft-card:hover {
+  transform: translateY(-4px);
+}
+/* Обертка для картинки */
+.nft-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.nft-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0; /* Картинка внутри карточки без скруглений внизу */
+}
+
+.nft-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(8px); /* Добавляем для Safari и линтера */
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.nft-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nft-collection-name {
+  font-size: 13px;
+  color: #fff;
+}
+
+.nft-name {
+  font-size: 16px;
+  color: var(--primary); /* Бирюзовый цвет названия */
+  font-weight: bold;
+}
+
+.nft-meta-row {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.nft-meta-value {
+  color: var(--primary);
+}
+
+.nft-price {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 8px;
+}
+
+.btn-buy-card {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.btn-buy-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.nft-votes {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Страница деталей NFT (Detail) */
+.back-btn {
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  color: #fff;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .detail-grid { grid-template-columns: 1fr; }
+  .nav { padding: 20px; }
+}
+
+.detail-img-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.chip {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.creator-tag {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.detail-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.detail-desc {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.price-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.price-label {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.price-val {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.vote-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.vote-count {
+  font-weight: 600;
+}
+
+/* Комментарии */
+.comments-wrap {
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+}
+
+.comments-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.comment-item {
+  background: var(--surface);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.comment-author {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.comment-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 8px;
+}
+
+.comment-date {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.no-comments {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.comment-form textarea {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  resize: none;
+  margin-bottom: 12px;
+}
+
+/* Формы авторизации */
+.auth-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+.auth-emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.auth-sub {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+.auth-switch {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.auth-switch span {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.auth-switch span:hover {
+  text-decoration: underline;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error);
+  color: #ff8080;
+}
+
+/* Модалка успеха */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  -webkit-backdrop-filter: blur(4px); /* Для поддержки Safari и чтобы успокоить некоторые линтеры */
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-nft-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.modal-sub {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+/* Сетка для бокового меню */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: transparent;
+  border-right: 1px solid var(--border);
+  padding: 40px 0;
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+/* Вертикальные ссылки меню */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links a.active {
+  color: var(--primary);
+  background: rgba(56, 229, 157, 0.05);
+  border-left: 3px solid var(--primary);
+}
+
+.btn-primary {
+  color: #000; /* Текст на изумрудной кнопке должен быть темным */
+}
