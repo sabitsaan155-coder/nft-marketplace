@@ -1,59 +1,27 @@
-# MyFablabProject
+# 🎨 NFT Marketplace (Frontend Client)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+A modern, responsive Single Page Application (SPA) built to simulate an NFT marketplace. This project was developed as a frontend developer test task, showcasing component-based architecture, state management via local storage, and dynamic UI updates without a real backend.
 
-## Development server
+## ✨ Key Features
 
-To start a local development server, run:
+- **User Authentication:** Simulated Registration and Login system.
+- **Role-Based Access:** - Guests can browse the NFT catalog and view detailed descriptions.
+  - Only registered users can buy NFTs, vote, and leave comments.
+- **Interactive NFT Catalog:** View a list of available NFTs with a search functionality.
+- **Detailed NFT Pages:** Includes high-quality images, long descriptions, metadata, and a dedicated comments section.
+- **Smart Recommendations:** "More by author" or "Explore other NFTs" section at the bottom of the detail page.
+- **Purchase Simulation:** Users can add NFTs to their personal collection (My NFTs) with interactive success modals.
+- **Voting & Comments System:** Engage with digital assets by leaving comments and upvoting favorites.
 
-```bash
-ng serve
-```
+## 🛠️ Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Framework:** Angular (TypeScript)
+- **Styling:** CSS3 (Custom variables, Flexbox/Grid layouts)
+- **Markup:** HTML5
+- **Data Storage:** LocalStorage & JSON (Backend simulation)
 
-## Code scaffolding
+## 🚀 How to Run Locally
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/sabitsaan155-coder/nft-marketplace.git](https://github.com/sabitsaan155-coder/nft-marketplace.git)
