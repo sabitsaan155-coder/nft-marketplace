@@ -25,3 +25,13 @@ A modern, responsive Single Page Application (SPA) built to simulate an NFT mark
 1. Clone the repository:
    ```bash
    git clone [https://github.com/sabitsaan155-coder/nft-marketplace.git](https://github.com/sabitsaan155-coder/nft-marketplace.git)
+2. Navigate to the project directory:
+cd nft-marketplace
+
+3. Install dependencies:
+npm install
+
+4. Start the development server:
+ng serve
+
+5. Open your browser and navigate to http://localhost:4200/.
